@@ -6,12 +6,12 @@ import <memory>;
 import <unordered_map>;
 import <stdexcept>;
 
-export namespace NT::Lib
+namespace NT::Lib
 {
 	template <typename ...$Args>
 	class EventListener;
 
-	template <typename ...$Args>
+	export template <typename ...$Args>
 	using EventCallback = std::function<void(const $Args &...)>;
 
 	/// <summary>
@@ -20,7 +20,7 @@ export namespace NT::Lib
 	/// When an event occurs, the callback function passed to the constructor is called.
 	/// </summary>
 	/// <typeparam name="$Args">The list of argument types passed when an event occurs.</typeparam>
-	template <typename ...$Args>
+	export template <typename ...$Args>
 	class EventListener : public Unique
 	{
 	public:
@@ -64,7 +64,7 @@ export namespace NT::Lib
 	/// Only event listener registration/removal operations are possible.
 	/// </summary>
 	/// <typeparam name="$Args">The list of argument types passed when an event occurs.</typeparam>
-	template <typename ...$Args>
+	export template <typename ...$Args>
 	class EventView : public Unique
 	{
 	public:
@@ -100,7 +100,7 @@ export namespace NT::Lib
 	/// The event owner must provide the event instance as an EventView type to prevent external sources from triggering the event.
 	/// </summary>
 	/// <typeparam name="$Args">The list of argument types passed when an event occurs.</typeparam>
-	template <typename ...$Args>
+	export template <typename ...$Args>
 	class Event : public EventView<$Args...>
 	{
 	public:
